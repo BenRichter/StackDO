@@ -1,0 +1,38 @@
+<ion-view title="StackDo" id="page1" style="background-color:#FFFFFF;">
+    <ion-content padding="true" class="has-header">
+        <button id="stackDo-button2" style="font-weight:600;" class="button button-balanced ">+</button>
+        <div class="list card">
+            <div class="item item-body">
+                <form class="list">
+                    <label class="item item-input" name="title">
+                        <input type="text" placeholder="Titel Input">
+                    </label>
+                    <label class="item item-input" name="date">
+                        <span class="input-label">Due</span>
+                        <input type="date" placeholder="">
+                    </label>
+                    <ion-item class="range range-positive">Prio
+                        <input type="range" value="2" min="1" max="3" name="priority">
+                    </ion-item>
+                    <label class="item item-input">
+                        <span class="input-label">Term h</span>
+                        <input type="number" placeholder="1">
+                    </label>
+                </form>
+            </div>
+        </div>
+        <div class="list card">
+            <div class="item item-body">
+                <h id="stackDo-heading1" style="color:#000000;font-weight:600;">Todo3 Title</h>
+                <div id="stackDo-markdown1" style="color:#000000;font-size:0px;">
+                    <p>Description text
+                        <strong>markdown</strong>
+                    </p>
+                </div>
+                <form class="list">
+                    <ion-checkbox></ion-checkbox>
+                </form>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>StackDO</title>
+
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-app="app" ng-controller="TodoCtrl" id="stackdo">
+
+<ion-side-menus>
+
+    <!-- Main content -->
+    <ion-side-menu-content>
+        <ion-header-bar  align-title="left" class="bar-dark">
+            <!-- toggl sidebar -->
+            <button class="button button-icon menu-button" ng-click="toggleCategories()">
+                <i class="icon ion-navicon"></i>
+            </button>
+
+            <h1 class="title">DO</h1> <!--{{activeCategories.title}}-->
+
+            <!-- New Task button-->
+            <button class="button button-icon" ng-click="newTask()">
+                <i class="icon ion-plus"></i>
+            </button>
+        </ion-header-bar>
+
+        <ion-content scroll="false">
+            <!-- our list and list items -->
+            <div class="todo-list">
+
+                <div class="card task color-red prio2" on-double-tap="editTask(task)"  ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} {{task.prio}}  -->
+                    <div class="item item-divider">
+                        <ion-checkbox ng-model="isChecked">{{task.title}}</ion-checkbox>
+
+                        <!--<button class="button icon ion-edit"></button>-->
+                    </div>
+
+                    <div class="item item-text-wrap row">
+                        <div class="duration">
+                            <i class=" ion-android-time text-center">15min</i>
+                        </div>
+
+                        <div class="prio">
+                            <i class="ion-alert"></i>
+                            <i class="ion-alert"></i>
+                            <i class="ion-alert"></i>
+                        </div>
+
+                        <div class="date">
+                            <i class=" ion-android-calendar text-center">15.08.16</i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </ion-content>
+
+    </ion-side-menu-content>
+
+
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <ion-header-bar align-title="left" class="bar-dark">
+            <h1 class="title">Category</h1>
+            <button class="button button-icon ion-plus" ng-click="newCategory()">
+            </button>
+        </ion-header-bar>
+        <ion-content scroll="false">
+            <ion-list>
+                <ion-item ng-repeat="category in categories" ng-click="selectCategory(category, $index)" ng-class="{active: activeCategories == category}" class="color-red"> <!-- {{category.color}} -->
+                    {{category.title}}
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+
+
+    <!-- new Task input modal -->
+    <script id="new-task.html" type="text/ng-template">
+
+        <div class="modal new-task">
+
+            <!-- Modal header bar -->
+            <ion-header-bar align-title="left" class="bar-secondary">
+                <h1 class="title" >New Task</h1>
+                <button class="button button-icon ion-close" ng-click="closeNewTask()"></button>
+            </ion-header-bar>
+
+            <!-- Modal content area -->
+            <ion-content>
+
+                <form ng-submit="createTask(task)">
+                    <div class="list ">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Titel" ng-model="task.title" autofocus>
+                        </label>
+
+                        <label class="item item-input" name="date">
+                            <span class="input-label">Due Date</span>
+                            <input type="date" placeholder="" ng-model="task.dueDate">
+                        </label>
+
+                        <ion-item class="range range-positive">
+                            <span class="input-label">Priority</span>
+
+                            <div class="range-wrapper ">
+                                <span class="range-label left">low</span>
+                                <input type="range" value="2" min="1" max="3" name="priority" ng-model="task.prio">
+                                <span class="range-label right">high</span>
+
+                            </div>
+                        </ion-item>
+
+                        <label class="item item-input">
+                            <span class="input-label">Duration h</span>
+                            <input type="number" placeholder="1" ng-model="task.duration">
+                        </label>
+
+                    </div>
+                    <div class="padding">
+                        <button type="submit" class="button button-block button-positive">Create Task</button>
+                    </div>
+                </form>
+
+            </ion-content>
+
+        </div>
+
+
+
+    </script>
+
+</ion-side-menus>
+</body>
+
+
+</html>
