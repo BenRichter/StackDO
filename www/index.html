@@ -104,7 +104,7 @@
             <!-- Modal content area -->
             <ion-content>
 
-                <form ng-submit="createTask(task)">
+                <form ng-submit="saveTask(task)">
                     <div class="list ">
                         <label class="item item-input">
                             <input type="text" placeholder="Titel" ng-model="task.title" autofocus>
@@ -112,8 +112,15 @@
 
                         <label class="item item-input" name="date">
                             <span class="input-label">Due Date</span>
-                            <input type="date" placeholder="" ng-model="task.dueDate">
+                            <input type="date" min="{{minDate}}" ng-model="task.dueDate">
+                            <!-- ng-init="task.dueDate = $scope.minDate" -->
                         </label>
+
+                        <label class="item item-input">
+                            <span class="input-label"></span>
+                            <input type="time" placeholder="" ng-model="task.dueTime">
+                        </label>
+
 
                         <ion-item class="range range-positive">
                             <span class="input-label">Priority</span>

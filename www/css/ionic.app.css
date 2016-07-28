@@ -9819,7 +9819,13 @@ Nested Properties:
 
 #stackdo {
   /** Elements **/
-  /** Modules **/ }
+  /** Modules **/
+  /**
+    * Main DO List
+    **/
+  /**
+    * new Task input modal
+    **/ }
   #stackdo .color-red.prio1:before {
     background-color: #f38f8c;
     width: 3px; }
@@ -9909,60 +9915,66 @@ Nested Properties:
   #stackdo.menu-open .menu-button .icon:before {
     transform: rotate(90deg); }
   #stackdo .scroll-content {
-    background: #eeeeef; }
-  #stackdo .todo-list {
-    padding-left: 14px; }
-    #stackdo .todo-list .task {
-      margin: 9px 3px;
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.62);
-      position: relative; }
-      #stackdo .todo-list .task:before {
-        content: "";
-        display: block;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0; }
-      #stackdo .todo-list .task .item {
-        padding: 2px 16px;
-        background: none;
-        border: none;
-        color: inherit; }
-      #stackdo .todo-list .task .item-divider {
-        padding: 0;
-        min-height: 0;
-        overflow: visible;
-        z-index: 3; }
-        #stackdo .todo-list .task .item-divider .item-checkbox {
-          padding-top: 7px;
-          padding-right: 40px;
-          overflow: visible; }
-          #stackdo .todo-list .task .item-divider .item-checkbox .checkbox {
-            top: 20px;
-            left: auto;
-            right: 0; }
-      #stackdo .todo-list .task .item-text-wrap {
-        font-size: 11px;
-        padding-bottom: 8px; }
-        #stackdo .todo-list .task .item-text-wrap > *:not(:first-child) {
-          padding-left: 10px; }
-        #stackdo .todo-list .task .item-text-wrap > * i:before {
-          padding-right: 2px; }
-        #stackdo .todo-list .task .item-text-wrap .text-center {
-          display: block; }
-        #stackdo .todo-list .task .item-text-wrap .prio {
-          width: 28px;
-          min-width: 28px; }
-          #stackdo .todo-list .task .item-text-wrap .prio i:before {
-            padding-right: 0;
-            margin-right: -1px; }
+    background: #f1f1f1; }
+  #stackdo .todo-list .task {
+    margin: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
+    position: relative; }
+    #stackdo .todo-list .task:before {
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0; }
+    #stackdo .todo-list .task .item {
+      padding: 2px 16px;
+      background: none;
+      border: none;
+      color: inherit; }
+    #stackdo .todo-list .task .item-divider {
+      padding: 0;
+      min-height: 0;
+      overflow: visible;
+      z-index: 3; }
+      #stackdo .todo-list .task .item-divider .item-checkbox {
+        padding-top: 7px;
+        padding-right: 40px;
+        overflow: visible; }
+        #stackdo .todo-list .task .item-divider .item-checkbox .checkbox {
+          top: 20px;
+          left: auto;
+          right: 0; }
+    #stackdo .todo-list .task .item-text-wrap {
+      font-size: 11px;
+      padding-bottom: 8px;
+      color: #8c8c8c; }
+      #stackdo .todo-list .task .item-text-wrap > *:not(:first-child) {
+        padding-left: 10px; }
+      #stackdo .todo-list .task .item-text-wrap > * i:before {
+        padding-right: 2px; }
+      #stackdo .todo-list .task .item-text-wrap .text-center {
+        display: block; }
+      #stackdo .todo-list .task .item-text-wrap .prio {
+        width: 28px;
+        min-width: 28px; }
+        #stackdo .todo-list .task .item-text-wrap .prio i:before {
+          padding-right: 0;
+          margin-right: -1px; }
   #stackdo .menu-left .title-left {
     margin-left: 10px; }
   #stackdo form .item {
     display: block;
     border: none;
-    padding-bottom: 8px; }
+    padding-bottom: 10px; }
+    #stackdo form .item.item-input {
+      padding-right: 16px; }
+      #stackdo form .item.item-input input {
+        padding-right: 0;
+        border-bottom: 1px solid #dddddd; }
+        #stackdo form .item.item-input input:focus {
+          border-bottom: 1px solid #aaaaaa; }
   #stackdo form .range {
     padding: 2px 16px; }
     #stackdo form .range .range-wrapper {
@@ -9979,6 +9991,7 @@ Nested Properties:
       width: 30px; }
   #stackdo form .input-label {
     padding: 0 16px 0 0;
+    margin-bottom: -7px;
     color: #989899;
     font-size: 11px;
     display: block; }

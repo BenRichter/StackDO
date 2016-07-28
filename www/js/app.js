@@ -56,9 +56,16 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
 
 
     /**
-     * The Categories controler
+     * The controler
      */
     .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Categories, $ionicSideMenuDelegate) {
+
+        /** Initialize  **/
+        $scope.dateToday = function() {
+            return new Date().toISOString().split('T')[0];
+            //document.getElementsByName("somedate")[0].setAttribute('min', today);
+        };
+        $scope.minDate = $scope.dateToday();
 
         /** Categories **/
         // Open Sidebar
@@ -119,6 +126,7 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
         };
 
 
+
         /** Tasks **/
         // Create Task Modal
         $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
@@ -136,7 +144,7 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
         };
 
         // Saves task
-        $scope.createTask = function(task) {
+        $scope.saveTask = function(task) {
             if(!$scope.activeCategories || !task) {
                 return;
             }
