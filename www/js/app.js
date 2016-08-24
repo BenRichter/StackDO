@@ -65,7 +65,23 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
             return new Date().toISOString().split('T')[0];
             //document.getElementsByName("somedate")[0].setAttribute('min', today);
         };
-        $scope.minDate = $scope.dateToday();
+        $scope.today = $scope.dateToday();
+
+        $scope.task = {
+            dueDate : new Date(),
+            dueTime : new Date()
+        };
+
+        $scope.getPrio = function(n){
+            if(n === undefined){
+                n = 2;
+            }else {
+                n = parseInt(n);
+
+            }
+
+            return new Array(n);
+        };
 
         /** Categories **/
         // Open Sidebar
@@ -149,14 +165,19 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
                 return;
             }
             $scope.activeCategories.tasks.push({
-                title: task.title
+                title:      task.title,
+                duration:   task.duration,
+                prio:       task.prio
             });
             $scope.taskModal.hide();
 
             // Inefficient, but save all the categories
             Categories.save($scope.categories);
 
+            // clear fields
             task.title = "";
+            task.duration = "";
+            task.prio = 2;
         };
         
         $scope.editTask = function (task){
@@ -167,6 +188,24 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
             console.log("doneTask");
 
 
+        };
+
+    })
+
+    .directive('stripedTime', function ($filter) {
+
+        return {
+            require: '?ngModel',
+            link: function(scope, elem, attr, ngModel) {
+                if( !ngModel )
+                    return;
+                if( attr.type !== 'time' )
+                    return;
+
+                ngModel.$formatters.unshift(function(value) {
+                    return value.replace(/:[0-9]+.[0-9]+$/, '');
+                });
+            }
         };
 
     });

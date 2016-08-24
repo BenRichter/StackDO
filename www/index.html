@@ -17,6 +17,7 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+
 </head>
 
 <body ng-app="app" ng-controller="TodoCtrl" id="stackdo">
@@ -44,21 +45,22 @@
             <div class="todo-list">
 
                 <div class="card task color-red prio2" on-double-tap="editTask(task)"  ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} {{task.prio}}  -->
+
+                    <pre>{{task}}</pre>
+
                     <div class="item item-divider">
                         <ion-checkbox ng-model="isChecked">{{task.title}}</ion-checkbox>
-
                         <!--<button class="button icon ion-edit"></button>-->
                     </div>
 
                     <div class="item item-text-wrap row">
                         <div class="duration">
-                            <i class=" ion-android-time text-center">15min</i>
+                            <i class="ion-android-time text-center">{{task.duration}}h</i>
                         </div>
 
                         <div class="prio">
-                            <i class="ion-alert"></i>
-                            <i class="ion-alert"></i>
-                            <i class="ion-alert"></i>
+                            <!--todo: save getPrio to var-->
+                            <i class="ion-alert" ng-repeat="i in getPrio(task.prio) track by $index"></i>
                         </div>
 
                         <div class="date">
@@ -90,9 +92,10 @@
     </ion-side-menu>
 
 
+
+
     <!-- new Task input modal -->
     <script id="new-task.html" type="text/ng-template">
-
         <div class="modal new-task">
 
             <!-- Modal header bar -->
@@ -102,7 +105,7 @@
             </ion-header-bar>
 
             <!-- Modal content area -->
-            <ion-content>
+            <ion-content class="no-bg">
 
                 <form ng-submit="saveTask(task)">
                     <div class="list ">
@@ -110,25 +113,26 @@
                             <input type="text" placeholder="Titel" ng-model="task.title" autofocus>
                         </label>
 
-                        <label class="item item-input" name="date">
-                            <span class="input-label">Due Date</span>
-                            <input type="date" min="{{minDate}}" ng-model="task.dueDate">
-                            <!-- ng-init="task.dueDate = $scope.minDate" -->
-                        </label>
+                        <div class="row row-bottom">
+                            <label class="item item-input col col-67">
+                                <span class="input-label">Due Date</span>
+                                <input type="date" min="{{today}}" ng-model="task.dueDate">
+                            </label>
 
-                        <label class="item item-input">
-                            <span class="input-label"></span>
-                            <input type="time" placeholder="" ng-model="task.dueTime">
-                        </label>
+                            <label class="item item-input col">
+                                <span class="input-label"></span>
+                                <input type="time" placeholder="" ng-model="task.dueTime" striped-time>
+                            </label>
+                        </div>
 
 
                         <ion-item class="range range-positive">
                             <span class="input-label">Priority</span>
 
                             <div class="range-wrapper ">
-                                <span class="range-label left">low</span>
-                                <input type="range" value="2" min="1" max="3" name="priority" ng-model="task.prio">
-                                <span class="range-label right">high</span>
+                                <span class="range-label left">low !</span>
+                                <input type="range" min="1" max="3" name="priority" ng-init="task.prio = 2" ng-model="task.prio">
+                                <span class="range-label right">high !!!</span>
 
                             </div>
                         </ion-item>
@@ -147,10 +151,8 @@
             </ion-content>
 
         </div>
-
-
-
     </script>
+
 
 </ion-side-menus>
 </body>
