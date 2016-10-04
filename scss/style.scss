@@ -202,14 +202,8 @@ Nested Properties:
 
 
     /**
-    * new Task input modal
+    * new Task input modal: form inputs
     **/
-    .new-task.modal {
-
-
-
-    }
-
     form {
         .row {
             padding: 0 0 0 (16 - 5px);
@@ -237,6 +231,7 @@ Nested Properties:
             }
         }
 
+        // input range slider
         .range {
             padding: 2px 16px;
 
@@ -256,9 +251,11 @@ Nested Properties:
                 display: block;
                 width: 30px;
             }
-            input {
-                //float: left;
-            }
+        }
+
+        // Date inputs
+        input[type="date"] {
+            min-width: 130px;
         }
 
         .input-label {
@@ -273,9 +270,6 @@ Nested Properties:
             }
         }
 
-        .item-input {
-
-        }
 
 
     }

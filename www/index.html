@@ -11,6 +11,8 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
 
+    <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
     <script src="cordova.js"></script>
@@ -24,7 +26,7 @@
 
 <ion-side-menus>
 
-    <!-- Main content -->
+<!-- MAIN content ---------------- -->
     <ion-side-menu-content>
         <ion-header-bar  align-title="left" class="bar-dark">
             <!-- toggl sidebar -->
@@ -40,13 +42,13 @@
             </button>
         </ion-header-bar>
 
-        <ion-content scroll="false">
+        <ion-content>
             <!-- our list and list items -->
             <div class="todo-list">
 
-                <div class="card task color-red prio2" on-double-tap="editTask(task)"  ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} {{task.prio}}  -->
+                <div class="card task color-red prio{{task.prio}}" on-double-tap="editTask(task)"  ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} {{task.prio}}  -->
 
-                    <pre>{{task}}</pre>
+                    <!--<pre>{{task}}</pre>-->
 
                     <div class="item item-divider">
                         <ion-checkbox ng-model="isChecked">{{task.title}}</ion-checkbox>
@@ -64,7 +66,8 @@
                         </div>
 
                         <div class="date">
-                            <i class=" ion-android-calendar text-center">15.08.16</i>
+                            <!-- TODO: print time left-->
+                            <i class=" ion-android-calendar text-center"> {{task.dueDate|date}} - {{task.dueTime|date:"H:mm"}}</i>
                         </div>
                     </div>
                 </div>
@@ -75,7 +78,8 @@
     </ion-side-menu-content>
 
 
-    <!-- Left menu -->
+
+ <!-- Left MENU --------------------------- -->
     <ion-side-menu side="left">
         <ion-header-bar align-title="left" class="bar-dark">
             <h1 class="title">Category</h1>
@@ -93,8 +97,7 @@
 
 
 
-
-    <!-- new Task input modal -->
+<!-- NEW Task input modal ------------------- -->
     <script id="new-task.html" type="text/ng-template">
         <div class="modal new-task">
 
@@ -113,7 +116,27 @@
                             <input type="text" placeholder="Titel" ng-model="task.title" autofocus>
                         </label>
 
+                        <!--TODO: Description-->
+
+                        <div class="row">
+
+                            <ion-item class="range range-positive col col-67">
+                                <span class="input-label">Priority</span>
+                                <div class="range-wrapper">
+                                    <span class="range-label left">low</span>
+                                    <input type="range" min="1" max="3" name="priority" ng-init="task.prio = 2" ng-model="task.prio">
+                                    <span class="range-label right">high</span>
+                                </div>
+                            </ion-item>
+
+                            <label class="item item-input col">
+                                <span class="input-label">Duration h</span>
+                                <input type="number" placeholder="1" ng-model="task.duration">
+                            </label>
+
+                        </div>
                         <div class="row row-bottom">
+
                             <label class="item item-input col col-67">
                                 <span class="input-label">Due Date</span>
                                 <input type="date" min="{{today}}" ng-model="task.dueDate">
@@ -123,24 +146,10 @@
                                 <span class="input-label"></span>
                                 <input type="time" placeholder="" ng-model="task.dueTime" striped-time>
                             </label>
+
                         </div>
 
-
-                        <ion-item class="range range-positive">
-                            <span class="input-label">Priority</span>
-
-                            <div class="range-wrapper ">
-                                <span class="range-label left">low !</span>
-                                <input type="range" min="1" max="3" name="priority" ng-init="task.prio = 2" ng-model="task.prio">
-                                <span class="range-label right">high !!!</span>
-
-                            </div>
-                        </ion-item>
-
-                        <label class="item item-input">
-                            <span class="input-label">Duration h</span>
-                            <input type="number" placeholder="1" ng-model="task.duration">
-                        </label>
+                        <!--TODO: Repeating Dropdown: eimalig, täglich -->
 
                     </div>
                     <div class="padding">

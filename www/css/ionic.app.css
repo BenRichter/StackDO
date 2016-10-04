@@ -9824,7 +9824,7 @@ Nested Properties:
     * Main DO List
     **/
   /**
-    * new Task input modal
+    * new Task input modal: form inputs
     **/ }
   #stackdo .color-red.prio1:before {
     background-color: #f38f8c;
@@ -9995,6 +9995,8 @@ Nested Properties:
       font-size: 11px;
       display: block;
       width: 30px; }
+  #stackdo form input[type="date"] {
+    min-width: 130px; }
   #stackdo form .input-label {
     padding: 0 16px 0 0;
     margin-bottom: -7px;
