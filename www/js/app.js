@@ -3,7 +3,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.services', 'app.directives'
+angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', 'app.routes', 'app.services', 'app.directives'
 
     //.run(function ($ionicPlatform) {
     //    $ionicPlatform.ready(function () {
@@ -20,6 +20,14 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
     //    });
     //})
 
+    /**
+     *  Configuration set namespace for local storage
+     *  Todo: use storage: https://scotch.io/tutorials/create-your-first-mobile-app-with-angularjs-and-ionic#building-out-the-real-stuff
+     */
+    .config(function (localStorageServiceProvider) {
+        localStorageServiceProvider
+            .setPrefix('stackDO');
+    })
 
     /**
      * The Categories factory handles saving and loading categories
@@ -60,24 +68,24 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
      */
     .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Categories, $ionicSideMenuDelegate) {
 
-        /** Initialize  **/
-        $scope.dateToday = function() {
-            return new Date().toISOString().split('T')[0];
-            //document.getElementsByName("somedate")[0].setAttribute('min', today);
-        };
-        $scope.today = $scope.dateToday();
+        /**
+         * Initialize
+         */
+        /* Minimal date for date and time picker */
+        $scope.currentDate = new Date();
+        $scope.today =  $scope.currentDate.toISOString().split('T')[0];
 
         $scope.task = {
-            dueDate : new Date(),
-            dueTime : new Date()
+            dueDate :  $scope.currentDate,
+            dueTime :  $scope.currentDate
         };
 
+        /* return array to ng-repeat */
         $scope.getPrio = function(n){
             if(n === undefined){
                 n = 2;
             }else {
                 n = parseInt(n);
-
             }
 
             return new Array(n);
@@ -166,8 +174,10 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
             }
             $scope.activeCategories.tasks.push({
                 title:      task.title,
+                prio:       task.prio,
                 duration:   task.duration,
-                prio:       task.prio
+                dueDate:      task.dueDate,
+                dueTime:      task.dueTime
             });
             $scope.taskModal.hide();
 
@@ -176,8 +186,10 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
 
             // clear fields
             task.title = "";
-            task.duration = "";
             task.prio = 2;
+            task.duration = "";
+            task.dueDate = $scope.currentDate;
+            task.dueTime = $scope.currentDate;
         };
         
         $scope.editTask = function (task){
@@ -192,6 +204,7 @@ angular.module('app', ['ionic']) // , 'app.controllers', 'app.routes', 'app.serv
 
     })
 
+    /* add striped-time for normal time format */
     .directive('stripedTime', function ($filter) {
 
         return {
