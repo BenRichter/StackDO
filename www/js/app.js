@@ -64,7 +64,7 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
 
 
     /**
-     * The controler
+     * The controller
      */
     .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Categories, $ionicSideMenuDelegate) {
 
@@ -114,7 +114,7 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
 
         // First category on init, make sure to defer this by $timeout
         // so everything is initialized properly
-        // TODO: populated later > remove
+        // TODO: pre-populating here
         $timeout(function() {
             if($scope.categories.length == 0) {
                 while(true) {
@@ -130,7 +130,7 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
 
         // Called to create a new category
         $scope.newCategory = function() {
-            // TODO: Popup input  http://ionicframework.com/docs/api/service/$ionicPopup/
+            // TODO: better Popup input  http://ionicframework.com/docs/api/service/$ionicPopup/
             var categoryTitle = prompt('Category name');
             if(categoryTitle) {
                 createCategory(categoryTitle);
@@ -146,12 +146,31 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
 
         $scope.deleteCategory = function(category, index) {
             console.log("TODO: deleteCategory");
-            // Popup confirmation: all tasks in category will be deleted
+            // todo: Popup confirmation: all tasks in category will be deleted
         };
 
 
 
         /** Tasks **/
+        /* Todo: Task order --> add importance points  ....  */
+
+
+        // prio * 100
+
+        // calc remaining time
+
+        // + remaining time till 'due date' * duration (work needed)      = (30 - remain)^2
+        // duration * 10
+
+        //  (hardness) --> early morning? or second after quick task to get startet
+
+
+        // func: order by points
+
+        // on done: seperate array, no reorder
+
+
+
         // Create Task Modal
         $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
             $scope.taskModal = modal;
@@ -198,8 +217,6 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
 
         $scope.doneTask = function (task){
             console.log("doneTask");
-
-
         };
 
     })
