@@ -48,11 +48,9 @@ Nested Properties:
 
     // Task Color set on cards
     @mixin priority($color) {
-        &.prio1:before { background-color: mix(white, $color, 30% ); width: 3px; }
-        &.prio2:before { background-color: mix(white, $color, 15% ); width: 6px; }
-        &.prio3:before { background-color: $color; width: 9px; }
-
-        //text-shadow: 0 -1px 0 darken($color, 20%);
+        &.prio1 { border-color: mix(white, $color, 30% );}
+        &.prio2 { border-color: mix(white, $color, 15% );}
+        &.prio3 { border-color: $color;}
     }
 
     // flat brights: flatcolors.net/palette/259-flat-brights#
@@ -64,6 +62,14 @@ Nested Properties:
     // flat web color: flatcolors.net/palette/617-flat-web-color-set
     .color-purple { @include priority(#BE90D4); }
     .color-cyan   { @include priority(#5AD4BC); }
+
+    // Set individual card heights by time needed
+    .duration2 > .item-divider { min-height: 35px;}
+    .duration3 > .item-divider { min-height: 45px;}
+    .duration4 > .item-divider { min-height: 54px;}
+    .duration5 > .item-divider { min-height: 62px;}
+    .duration6 > .item-divider { min-height: 69px;}
+    .duration7 > .item-divider { min-height: 75px;}
 
     // fix Icon sizes
     .button-icon {
@@ -129,17 +135,9 @@ Nested Properties:
             margin: 3px;
             box-shadow: 0 1px 2px rgba(0,0,0,.13);
             position: relative;
-            
-            &:before {
-                content: "";
-                display: block;
-                height: 100%;
-                //width: 7px;
-                position: absolute;
-                left: 0;
-                top: 0;
-                bottom: 0;
-            }
+
+            border-style: solid;
+            border-width: 0 2px;
 
             .item {
                 padding: 2px 16px;
@@ -150,7 +148,7 @@ Nested Properties:
 
             .item-divider {
                 padding:    0;
-                min-height: 0;
+                //min-height: 0;
 
                 overflow: visible;
                 z-index: 3;

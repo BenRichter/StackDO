@@ -9826,71 +9826,62 @@ Nested Properties:
   /**
     * new Task input modal: form inputs
     **/ }
-  #stackdo .color-red.prio1:before {
-    background-color: #f38f8c;
-    width: 3px; }
-  #stackdo .color-red.prio2:before {
-    background-color: #f17774;
-    width: 6px; }
-  #stackdo .color-red.prio3:before {
-    background-color: #ee5f5b;
-    width: 9px; }
-  #stackdo .color-blue.prio1:before {
-    background-color: #8cd3e8;
-    width: 3px; }
-  #stackdo .color-blue.prio2:before {
-    background-color: #74c9e3;
-    width: 6px; }
-  #stackdo .color-blue.prio3:before {
-    background-color: #5bc0de;
-    width: 9px; }
-  #stackdo .color-orange.prio1:before {
-    background-color: #fab451;
-    width: 3px; }
-  #stackdo .color-orange.prio2:before {
-    background-color: #f9a42b;
-    width: 6px; }
-  #stackdo .color-orange.prio3:before {
-    background-color: #f89406;
-    width: 9px; }
-  #stackdo .color-green.prio1:before {
-    background-color: #91d691;
-    width: 3px; }
-  #stackdo .color-green.prio2:before {
-    background-color: #7acd7a;
-    width: 6px; }
-  #stackdo .color-green.prio3:before {
-    background-color: #62c462;
-    width: 9px; }
+  #stackdo .color-red.prio1 {
+    border-color: #f38f8c; }
+  #stackdo .color-red.prio2 {
+    border-color: #f17774; }
+  #stackdo .color-red.prio3 {
+    border-color: #ee5f5b; }
+  #stackdo .color-blue.prio1 {
+    border-color: #8cd3e8; }
+  #stackdo .color-blue.prio2 {
+    border-color: #74c9e3; }
+  #stackdo .color-blue.prio3 {
+    border-color: #5bc0de; }
+  #stackdo .color-orange.prio1 {
+    border-color: #fab451; }
+  #stackdo .color-orange.prio2 {
+    border-color: #f9a42b; }
+  #stackdo .color-orange.prio3 {
+    border-color: #f89406; }
+  #stackdo .color-green.prio1 {
+    border-color: #91d691; }
+  #stackdo .color-green.prio2 {
+    border-color: #7acd7a; }
+  #stackdo .color-green.prio3 {
+    border-color: #62c462; }
   #stackdo .color-yellow {
     color: #4c4c4c !important; }
-    #stackdo .color-yellow.prio1:before {
-      background-color: #fff789;
-      width: 3px; }
-    #stackdo .color-yellow.prio2:before {
-      background-color: #fff670;
-      width: 6px; }
-    #stackdo .color-yellow.prio3:before {
-      background-color: #fff457;
-      width: 9px; }
-  #stackdo .color-purple.prio1:before {
-    background-color: #d2b1e1;
-    width: 3px; }
-  #stackdo .color-purple.prio2:before {
-    background-color: #c8a1da;
-    width: 6px; }
-  #stackdo .color-purple.prio3:before {
-    background-color: #BE90D4;
-    width: 9px; }
-  #stackdo .color-cyan.prio1:before {
-    background-color: #8ce1d0;
-    width: 3px; }
-  #stackdo .color-cyan.prio2:before {
-    background-color: #73dac6;
-    width: 6px; }
-  #stackdo .color-cyan.prio3:before {
-    background-color: #5AD4BC;
-    width: 9px; }
+    #stackdo .color-yellow.prio1 {
+      border-color: #fff789; }
+    #stackdo .color-yellow.prio2 {
+      border-color: #fff670; }
+    #stackdo .color-yellow.prio3 {
+      border-color: #fff457; }
+  #stackdo .color-purple.prio1 {
+    border-color: #d2b1e1; }
+  #stackdo .color-purple.prio2 {
+    border-color: #c8a1da; }
+  #stackdo .color-purple.prio3 {
+    border-color: #BE90D4; }
+  #stackdo .color-cyan.prio1 {
+    border-color: #8ce1d0; }
+  #stackdo .color-cyan.prio2 {
+    border-color: #73dac6; }
+  #stackdo .color-cyan.prio3 {
+    border-color: #5AD4BC; }
+  #stackdo .duration2 > .item-divider {
+    min-height: 35px; }
+  #stackdo .duration3 > .item-divider {
+    min-height: 45px; }
+  #stackdo .duration4 > .item-divider {
+    min-height: 54px; }
+  #stackdo .duration5 > .item-divider {
+    min-height: 62px; }
+  #stackdo .duration6 > .item-divider {
+    min-height: 69px; }
+  #stackdo .duration7 > .item-divider {
+    min-height: 75px; }
   #stackdo .button-icon .ion-plus:before, #stackdo .button-icon.ion-plus:before, #stackdo .button-icon .ion-close:before, #stackdo .button-icon.ion-close:before {
     font-size: 24px; }
   #stackdo .checkbox input:before, #stackdo .checkbox-icon:before {
@@ -9921,15 +9912,9 @@ Nested Properties:
   #stackdo .todo-list .task {
     margin: 3px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
-    position: relative; }
-    #stackdo .todo-list .task:before {
-      content: "";
-      display: block;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0; }
+    position: relative;
+    border-style: solid;
+    border-width: 0 2px; }
     #stackdo .todo-list .task .item {
       padding: 2px 16px;
       background: none;
@@ -9937,7 +9922,6 @@ Nested Properties:
       color: inherit; }
     #stackdo .todo-list .task .item-divider {
       padding: 0;
-      min-height: 0;
       overflow: visible;
       z-index: 3; }
       #stackdo .todo-list .task .item-divider .item-checkbox {
