@@ -46,7 +46,9 @@
             <!-- our list and list items -->
             <div class="todo-list">
 
-                <div class="card task color-red prio{{task.prio}}" on-double-tap="editTask(task)"  ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} {{task.prio}}  -->
+                <div class="card task color-red prio{{task.prio}} duration{{getCardHeight(task.duration)}}"
+                     on-double-tap="editTask(task)"
+                     ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} {{task.prio}}  -->
 
                     <!--<pre>{{task}}</pre>-->
 

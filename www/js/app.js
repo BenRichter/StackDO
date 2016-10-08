@@ -91,6 +91,14 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
             return new Array(n);
         };
 
+        /* return card  height  */
+        $scope.getCardHeight = function(duration){
+            var height = Math.round(duration);
+            if(height > 6){ height = 7; }
+
+            return height;
+        };
+
         /** Categories **/
         // Open Sidebar
         $scope.toggleCategories = function() {
