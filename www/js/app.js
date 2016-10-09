@@ -62,7 +62,6 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
         }
     })
 
-
     /**
      * The controller
      */
@@ -80,24 +79,7 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
             dueTime :  $scope.currentDate
         };
 
-        /* return array to ng-repeat */
-        $scope.getPrio = function(n){
-            if(n === undefined){
-                n = 2;
-            }else {
-                n = parseInt(n);
-            }
-
-            return new Array(n);
-        };
-
-        /* return card  height  */
-        $scope.getCardHeight = function(duration){
-            var height = Math.round(duration);
-            if(height > 6){ height = 7; }
-
-            return height;
-        };
+        //$scope.pointsChanged = true;
 
         /** Categories **/
         // Open Sidebar
@@ -157,12 +139,36 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
             // todo: Popup confirmation: all tasks in category will be deleted
         };
 
-
-
         /** Tasks **/
+        /* return array to ng-repeat */
+        $scope.getPrio = function(n){
+            if(n === undefined){
+                n = 2;
+            }else {
+                n = parseInt(n);
+            }
+
+            return new Array(n);
+        };
+
+        /* return card height by given duration time  */
+        $scope.getCardHeight = function(duration){
+            var height = Math.round(duration);
+            if(height > 6){ height = 7; }
+
+            return height;
+        };
+
+
+
+
+
         /* Todo: Task order --> add importance points  ....  */
 
+        
 
+        
+        
         // prio * 100
 
         // calc remaining time
@@ -176,6 +182,30 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
         // func: order by points
 
         // on done: seperate array, no reorder
+
+        /** Calculate Stack Points */
+        $scope.calculatePoints = function(task) {
+            console.log("calculate points");
+
+            // Todo: task.points = ...;
+            task.points = 100;
+
+            if(task.done == true){
+                task.points = 0;
+            }
+        };
+
+        /** Reorder List of tasks
+         *  triggered by: saveTask(), doneTask() */
+        $scope.reorderTaskList = function() {
+
+            //if($scope.pointsChanged === true){
+                console.log("reorder tasks");
+
+            //
+            //    this.pointsChanged = false;
+            //}
+        };
 
 
 
@@ -199,14 +229,20 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
             if(!$scope.activeCategories || !task) {
                 return;
             }
+
+            $scope.calculatePoints(task);
+
             $scope.activeCategories.tasks.push({
                 title:      task.title,
                 prio:       task.prio,
                 duration:   task.duration,
-                dueDate:      task.dueDate,
-                dueTime:      task.dueTime
+                dueDate:    task.dueDate,
+                dueTime:    task.dueTime,
+                points:     task.points
             });
             $scope.taskModal.hide();
+            $scope.reorderTaskList();
+            
 
             // Inefficient, but save all the categories
             Categories.save($scope.categories);
@@ -221,16 +257,22 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
         
         $scope.editTask = function (task){
             console.log("TODO: editTask");
+
+            $scope.calculatePoints(task);
+            $scope.reorderTaskList();
+
         };
 
         $scope.doneTask = function (task){
-            console.log("doneTask");
+            $scope.calculatePoints(task);
+            $scope.reorderTaskList();
+            Categories.save($scope.categories);
         };
 
     })
 
     /* add striped-time for normal time format */
-    .directive('stripedTime', function ($filter) {
+    .directive('stripedTime', function () {
 
         return {
             require: '?ngModel',

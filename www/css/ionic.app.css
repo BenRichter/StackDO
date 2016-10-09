@@ -9882,6 +9882,8 @@ Nested Properties:
     min-height: 69px; }
   #stackdo .duration7 > .item-divider {
     min-height: 75px; }
+  #stackdo .card.done {
+    background-color: #e7e7e7; }
   #stackdo .button-icon .ion-plus:before, #stackdo .button-icon.ion-plus:before, #stackdo .button-icon .ion-close:before, #stackdo .button-icon.ion-close:before {
     font-size: 24px; }
   #stackdo .checkbox input:before, #stackdo .checkbox-icon:before {
@@ -9914,7 +9916,8 @@ Nested Properties:
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
     position: relative;
     border-style: solid;
-    border-width: 0 2px; }
+    border-width: 0 2px;
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     #stackdo .todo-list .task .item {
       padding: 2px 16px;
       background: none;

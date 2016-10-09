@@ -47,14 +47,14 @@
             <div class="todo-list">
 
                 <div class="card task color-red prio{{task.prio}} duration{{getCardHeight(task.duration)}}"
+                     ng-class="{'done': task.done}"
                      on-double-tap="editTask(task)"
-                     ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} {{task.prio}}  -->
+                     ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} -->
 
-                    <!--<pre>{{task}}</pre>-->
+                    <pre>{{task}}</pre>
 
                     <div class="item item-divider">
-                        <ion-checkbox ng-model="isChecked">{{task.title}}</ion-checkbox>
-                        <!--<button class="button icon ion-edit"></button>-->
+                        <ion-checkbox ng-model="task.done" ng-click="doneTask(task)">{{task.title}}</ion-checkbox>
                     </div>
 
                     <div class="item item-text-wrap row">
