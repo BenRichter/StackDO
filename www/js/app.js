@@ -74,12 +74,18 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
         $scope.currentDate = new Date();
         $scope.today =  $scope.currentDate.toISOString().split('T')[0];
 
-        $scope.task = {
-            dueDate :  $scope.currentDate,
-            dueTime :  $scope.currentDate
+        // clear fields
+        $scope.resetToDefault = function() {
+            $scope.task = {
+                title : "",
+                prio : 2,
+                duration : null,
+                dueDate : null,
+                dueTime : null
+            };
         };
+        $scope.resetToDefault();
 
-        //$scope.pointsChanged = true;
 
         /** Categories **/
         // Open Sidebar
@@ -165,13 +171,22 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
 
         /* Todo: Task order --> add importance points  ....  */
 
-        
+        // calc remaining time
+        $scope.remainingTime = function (task){
+            // todo: update Task points by time passing!
 
-        
-        
+            if (task.dueDate === undefined){
+                return 2592000000; // 30 days
+            }
+
+            //var currentDate = new Date();
+            //return task.dueDate.getTime() - currentDate.getTime();
+            return 0;
+        };
+
+
         // prio * 100
 
-        // calc remaining time
 
         // + remaining time till 'due date' * duration (work needed)      = (30 - remain)^2
         // duration * 10
@@ -187,8 +202,10 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
         $scope.calculatePoints = function(task) {
             console.log("calculate points");
 
+            console.log("DiffDate " + $scope.remainingTime(task));
+
             // Todo: task.points = ...;
-            task.points = 100;
+            task.points = (task.prio * 1000);
 
             if(task.done == true){
                 task.points = 0;
@@ -224,6 +241,7 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
             $scope.taskModal.hide();
         };
 
+
         // Saves task
         $scope.saveTask = function(task) {
             if(!$scope.activeCategories || !task) {
@@ -246,13 +264,7 @@ angular.module('app', ['ionic', 'LocalStorageModule']) // , 'app.controllers', '
 
             // Inefficient, but save all the categories
             Categories.save($scope.categories);
-
-            // clear fields
-            task.title = "";
-            task.prio = 2;
-            task.duration = "";
-            task.dueDate = $scope.currentDate;
-            task.dueTime = $scope.currentDate;
+            $scope.resetToDefault();
         };
         
         $scope.editTask = function (task){

@@ -9966,6 +9966,8 @@ Nested Properties:
       #stackdo form .item.item-input input {
         padding-right: 0;
         border-bottom: 1px solid #dddddd; }
+        #stackdo form .item.item-input input.ng-invalid {
+          border-bottom-color: #ee5f5b; }
         #stackdo form .item.item-input input:focus {
           border-bottom: 1px solid #aaaaaa; }
   #stackdo form .range {
