@@ -229,6 +229,7 @@ Nested Properties:
                     padding-right: 0;
                     border-bottom: 1px solid #dddddd;
 
+                    &.ng-invalid { border-bottom-color: #ee5f5b; }
                     &:focus { border-bottom: 1px solid #aaaaaa; }
                 }
             }

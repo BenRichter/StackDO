@@ -115,7 +115,7 @@
                 <form ng-submit="saveTask(task)">
                     <div class="list ">
                         <label class="item item-input">
-                            <input type="text" placeholder="Titel" ng-model="task.title" autofocus>
+                            <input type="text" placeholder="Titel" ng-model="task.title" autofocus required="required">
                         </label>
 
                         <!--TODO: Description-->
@@ -133,7 +133,7 @@
 
                             <label class="item item-input col">
                                 <span class="input-label">Duration h</span>
-                                <input type="number" placeholder="1" ng-model="task.duration">
+                                <input type="number" min="0" step="any" ng-model="task.duration">
                             </label>
 
                         </div>
