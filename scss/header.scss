@@ -1,0 +1,51 @@
+/**
+* Header and Menue bar
+**/
+#stackdo {
+    .menu-content .bar-header {
+        .title {
+            margin-left: -16px;
+            font-size:   20px;
+            line-height: 42px;
+        }
+
+        .menu-button {
+            &:after { right: -35px; }
+
+            &.activated { opacity: 1; }
+
+            .icon {
+                //overflow: hidden;
+                position: relative;
+                display:  block;
+                width:    18px;
+                height:   15px;
+
+                &:before {
+                    overflow:    hidden;
+                    width:       16px;
+                    line-height: 16px;
+                    padding:     0;
+                    transition:  transform 0.3s ease-out;
+                }
+            }
+        }
+    }
+    &.menu-open .menu-button .icon:before {
+        transform: rotate(90deg);
+    }
+
+    .scroll-content:not(.no-bg) {
+        background: #f1f1f1;
+    }
+
+    // fix Icon sizes
+    .button-icon {
+        .ion-plus, &.ion-plus, .ion-close, &.ion-close {
+            &:before {
+                font-size: 24px;
+            }
+        }
+    }
+
+}

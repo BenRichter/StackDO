@@ -1,0 +1,76 @@
+/**
+* New Task input modal: form inputs
+**/
+#stackdo {
+    form {
+        .row {
+            padding:    0 0 0 (16 - 5px);
+            background: #ffffff;
+
+            .item.item-input.col-67 {
+                padding-right: 5px;
+            }
+        }
+
+        .item {
+            display:        block;
+            border:         none;
+            padding-bottom: 10px;
+
+            &.item-input {
+                padding-right: 16px;
+
+                input {
+                    padding-right: 0;
+                    border-bottom: 1px solid #dddddd;
+
+                    &.ng-invalid { border-bottom-color: #ee5f5b; }
+                    &:focus { border-bottom: 1px solid #aaaaaa; }
+                }
+            }
+        }
+
+        // input range slider
+        .range {
+            padding-right: 16px;
+
+            .range-wrapper {
+                padding-left: 5px;
+                display:      flex;
+                align-items:  center;
+                margin-top:   -10px;
+                //max-width: 350px;
+            }
+
+            .range-label {
+                flex:      0;
+                padding:   0;
+                color:     #989899;
+                font-size: 11px;
+                display:   block;
+                width:     30px;
+            }
+        }
+
+        // Date inputs
+        input[type="date"] {
+            min-width: 130px;
+        }
+
+        .input-label {
+            padding:       0 16px 0 0;
+            margin-bottom: -7px;
+            color:         #989899;
+            font-size:     11px;
+            display:       block;
+
+            & + input {
+                padding-left: 5px;
+            }
+        }
+    }
+
+    .checkbox input:before, .checkbox-icon:before {
+        border-radius: 1px;
+    }
+}

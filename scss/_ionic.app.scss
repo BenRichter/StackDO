@@ -20,6 +20,15 @@ $dark:      #444444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+// Creator fixes
+.platform-ios .manual-ios-statusbar-padding { padding-top: 20px; }
+.manual-remove-top-padding { padding-top: 0; }
+.manual-remove-top-padding .scroll { padding-top: 0 !important; }
+
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-@import "scss/style.scss";
+
+@import "scss/header.scss";
+@import "scss/list.scss";
+@import "scss/form.scss";

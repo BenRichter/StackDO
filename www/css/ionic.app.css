@@ -7,6 +7,15 @@ For example, you might change some of the default colors:
 
 http://www.materialpalette.com/
 */
+.platform-ios .manual-ios-statusbar-padding {
+  padding-top: 20px; }
+
+.manual-remove-top-padding {
+  padding-top: 0; }
+
+.manual-remove-top-padding .scroll {
+  padding-top: 0 !important; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9781,51 +9790,87 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-/* StackDO. Sass */
-/** Cheat sheet
-SASS: (syntactically awesome) indented syntax, no brackets, no semicolon
-SCSS: (sassy css)
-
-$font-stack:    Helvetica, sans-serif;
-
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
-}
-.box { @include border-radius(10px); }
-
-
-width: 600px / 960px * 100%;
-
-Nested Properties:
-.funky {
-  font: {
-    family: fantasy;
-    size: 30em;
-    weight: bold;
-  }
-}
+/**
+* Header and Menue bar
 **/
-.platform-ios .manual-ios-statusbar-padding {
-  padding-top: 20px; }
+#stackdo .menu-content .bar-header .title {
+  margin-left: -16px;
+  font-size: 20px;
+  line-height: 42px; }
 
-.manual-remove-top-padding {
-  padding-top: 0; }
+#stackdo .menu-content .bar-header .menu-button:after {
+  right: -35px; }
 
-.manual-remove-top-padding .scroll {
-  padding-top: 0 !important; }
+#stackdo .menu-content .bar-header .menu-button.activated {
+  opacity: 1; }
 
+#stackdo .menu-content .bar-header .menu-button .icon {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 15px; }
+  #stackdo .menu-content .bar-header .menu-button .icon:before {
+    overflow: hidden;
+    width: 16px;
+    line-height: 16px;
+    padding: 0;
+    transition: transform 0.3s ease-out; }
+
+#stackdo.menu-open .menu-button .icon:before {
+  transform: rotate(90deg); }
+
+#stackdo .scroll-content:not(.no-bg) {
+  background: #f1f1f1; }
+
+#stackdo .button-icon .ion-plus:before, #stackdo .button-icon.ion-plus:before, #stackdo .button-icon .ion-close:before, #stackdo .button-icon.ion-close:before {
+  font-size: 24px; }
+
+/**
+* Main DO List and Card
+**/
 #stackdo {
-  /** Elements **/
-  /** Modules **/
   /**
-    * Main DO List
-    **/
-  /**
-    * new Task input modal: form inputs
+    * Card task properties
     **/ }
+  #stackdo .todo-list .task {
+    margin: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
+    position: relative;
+    border-style: solid;
+    border-width: 0 2px;
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    #stackdo .todo-list .task .item {
+      padding: 2px 16px;
+      background: none;
+      border: none;
+      color: inherit; }
+    #stackdo .todo-list .task .item-divider {
+      padding: 0;
+      overflow: visible;
+      z-index: 3; }
+      #stackdo .todo-list .task .item-divider .item-checkbox {
+        padding-top: 7px;
+        padding-right: 40px;
+        overflow: visible; }
+        #stackdo .todo-list .task .item-divider .item-checkbox .checkbox {
+          top: 20px;
+          left: auto;
+          right: 0; }
+    #stackdo .todo-list .task .item-text-wrap {
+      font-size: 11px;
+      padding-bottom: 8px;
+      color: #8c8c8c; }
+      #stackdo .todo-list .task .item-text-wrap > *:not(:first-child) {
+        padding-left: 10px; }
+      #stackdo .todo-list .task .item-text-wrap > * i:before {
+        padding-right: 2px; }
+      #stackdo .todo-list .task .item-text-wrap .text-center {
+        display: block; }
+      #stackdo .todo-list .task .item-text-wrap .prio {
+        width: 28px;
+        min-width: 28px; }
+        #stackdo .todo-list .task .item-text-wrap .prio i:before {
+          margin-right: -0.03em; }
   #stackdo .color-red.prio1 {
     border-color: #f38f8c; }
   #stackdo .color-red.prio2 {
@@ -9884,113 +9929,56 @@ Nested Properties:
     min-height: 75px; }
   #stackdo .card.done {
     background-color: #e7e7e7; }
-  #stackdo .button-icon .ion-plus:before, #stackdo .button-icon.ion-plus:before, #stackdo .button-icon .ion-close:before, #stackdo .button-icon.ion-close:before {
-    font-size: 24px; }
-  #stackdo .checkbox input:before, #stackdo .checkbox-icon:before {
-    border-radius: 1px; }
-  #stackdo .menu-content .bar-header .title {
-    margin-left: -16px;
-    font-size: 20px;
-    line-height: 42px; }
-  #stackdo .menu-content .bar-header .menu-button:after {
-    right: -35px; }
-  #stackdo .menu-content .bar-header .menu-button.activated {
-    opacity: 1; }
-  #stackdo .menu-content .bar-header .menu-button .icon {
-    position: relative;
-    display: block;
-    width: 18px;
-    height: 15px; }
-    #stackdo .menu-content .bar-header .menu-button .icon:before {
-      overflow: hidden;
-      width: 16px;
-      line-height: 16px;
-      padding: 0;
-      transition: transform 0.3s ease-out; }
-  #stackdo.menu-open .menu-button .icon:before {
-    transform: rotate(90deg); }
-  #stackdo .scroll-content:not(.no-bg) {
-    background: #f1f1f1; }
-  #stackdo .todo-list .task {
-    margin: 3px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
-    position: relative;
-    border-style: solid;
-    border-width: 0 2px;
-    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    #stackdo .todo-list .task .item {
-      padding: 2px 16px;
-      background: none;
-      border: none;
-      color: inherit; }
-    #stackdo .todo-list .task .item-divider {
-      padding: 0;
-      overflow: visible;
-      z-index: 3; }
-      #stackdo .todo-list .task .item-divider .item-checkbox {
-        padding-top: 7px;
-        padding-right: 40px;
-        overflow: visible; }
-        #stackdo .todo-list .task .item-divider .item-checkbox .checkbox {
-          top: 20px;
-          left: auto;
-          right: 0; }
-    #stackdo .todo-list .task .item-text-wrap {
-      font-size: 11px;
-      padding-bottom: 8px;
-      color: #8c8c8c; }
-      #stackdo .todo-list .task .item-text-wrap > *:not(:first-child) {
-        padding-left: 10px; }
-      #stackdo .todo-list .task .item-text-wrap > * i:before {
-        padding-right: 2px; }
-      #stackdo .todo-list .task .item-text-wrap .text-center {
-        display: block; }
-      #stackdo .todo-list .task .item-text-wrap .prio {
-        width: 28px;
-        min-width: 28px; }
-        #stackdo .todo-list .task .item-text-wrap .prio i:before {
-          margin-right: -0.03em; }
-  #stackdo .menu-left .title-left {
-    margin-left: 10px; }
-  #stackdo form .row {
-    padding: 0 0 0 11px;
-    background: #ffffff; }
-    #stackdo form .row .item.item-input.col-67 {
-      padding-right: 5px; }
-  #stackdo form .item {
-    display: block;
-    border: none;
-    padding-bottom: 10px; }
-    #stackdo form .item.item-input {
-      padding-right: 16px; }
-      #stackdo form .item.item-input input {
-        padding-right: 0;
-        border-bottom: 1px solid #dddddd; }
-        #stackdo form .item.item-input input.ng-invalid {
-          border-bottom-color: #ee5f5b; }
-        #stackdo form .item.item-input input:focus {
-          border-bottom: 1px solid #aaaaaa; }
-  #stackdo form .range {
-    padding: 2px 16px; }
-    #stackdo form .range .range-wrapper {
-      padding-left: 5px;
-      display: flex;
-      align-items: center;
-      margin-top: -10px; }
-    #stackdo form .range .range-label {
-      flex: 0;
-      padding: 0;
-      color: #989899;
-      font-size: 11px;
-      display: block;
-      width: 30px; }
-  #stackdo form input[type="date"] {
-    min-width: 130px; }
-  #stackdo form .input-label {
-    padding: 0 16px 0 0;
-    margin-bottom: -7px;
+
+/**
+* New Task input modal: form inputs
+**/
+#stackdo form .row {
+  padding: 0 0 0 11px;
+  background: #ffffff; }
+  #stackdo form .row .item.item-input.col-67 {
+    padding-right: 5px; }
+
+#stackdo form .item {
+  display: block;
+  border: none;
+  padding-bottom: 10px; }
+  #stackdo form .item.item-input {
+    padding-right: 16px; }
+    #stackdo form .item.item-input input {
+      padding-right: 0;
+      border-bottom: 1px solid #dddddd; }
+      #stackdo form .item.item-input input.ng-invalid {
+        border-bottom-color: #ee5f5b; }
+      #stackdo form .item.item-input input:focus {
+        border-bottom: 1px solid #aaaaaa; }
+
+#stackdo form .range {
+  padding-right: 16px; }
+  #stackdo form .range .range-wrapper {
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: -10px; }
+  #stackdo form .range .range-label {
+    flex: 0;
+    padding: 0;
     color: #989899;
     font-size: 11px;
-    display: block; }
-    #stackdo form .input-label + input {
-      padding-left: 5px; }
+    display: block;
+    width: 30px; }
+
+#stackdo form input[type="date"] {
+  min-width: 130px; }
+
+#stackdo form .input-label {
+  padding: 0 16px 0 0;
+  margin-bottom: -7px;
+  color: #989899;
+  font-size: 11px;
+  display: block; }
+  #stackdo form .input-label + input {
+    padding-left: 5px; }
+
+#stackdo .checkbox input:before, #stackdo .checkbox-icon:before {
+  border-radius: 1px; }
