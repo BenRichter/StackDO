@@ -5,6 +5,9 @@
 # User-specific stuff:
 .idea
 
+# ignore bower and node packages
+/www/lib
 node_modules/
+
 platforms/
 plugins/
