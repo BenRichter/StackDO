@@ -109,41 +109,45 @@ angular.module('controllers', [])
         $scope.remainingTime = function (task) {
             // todo: update Task points by time passing!
 
-            if (task.dueDate === undefined) {
+            if (task.dueDate === null || task.dueDate === undefined) {
                 return 2592000000; // 30 days
             }
 
-            //var currentDate = new Date();
+            // todo: var currentDate = new Date();
             //return task.dueDate.getTime() - currentDate.getTime();
             return 0;
         };
 
-
-        // prio * 100
-
-
-        // + remaining time till 'due date' * duration (work needed)      = (30 - remain)^2
-        // duration * 10
-
-        //  (hardness) --> early morning? or second after quick task to get startet
-
-
-        // func: order by points
-
-        // on done: seperate array, no reorder
+        // Test for integer and null
+        $scope.isNumber = function(obj) {
+            return ! isNaN (obj - 0) && obj != null;
+        };
 
         /** Calculate Stack Points */
         $scope.calculatePoints = function (task) {
             console.log("calculate points");
 
-            console.log("DiffDate " + $scope.remainingTime(task));
-
-            // Todo: task.points = ...;
-            task.points = (task.prio * 1000);
-
             if (task.done == true) {
-                task.points = 0;
+               return 0;
             }
+
+            // + remaining time till 'due date' * duration (work needed)      = (30 - remain)^2
+            var remainingDays = ($scope.remainingTime(task) / (1000*60*60*24)); // default 30
+            var dueDate =  Math.pow(Number(30) - remainingDays, 2);
+            console.log(" diffDate  " + remainingDays);
+
+            // duration * 20
+            var duration = $scope.isNumber(task.duration) ? (task.duration * 20) : 0;
+            console.log(" duration  " + duration);
+
+            // prio * 500
+            var priority = $scope.isNumber(task.prio) ? (task.prio * 500) : 0;
+            console.log(" priority  " + priority);
+
+            //  (hardess) --> early morning? or second after quick task to get startet
+
+
+            return dueDate + duration + priority;
         };
 
         /** Reorder List of tasks
@@ -181,7 +185,7 @@ angular.module('controllers', [])
                 return;
             }
 
-            $scope.calculatePoints(task);
+            task.points = $scope.calculatePoints(task);
 
             $scope.activeCategories.tasks.push({
                 title: task.title,
@@ -203,13 +207,13 @@ angular.module('controllers', [])
         $scope.editTask = function (task) {
             console.log("TODO: editTask");
 
-            $scope.calculatePoints(task);
+            task.points = $scope.calculatePoints(task);
             $scope.reorderTaskList();
 
         };
 
         $scope.doneTask = function (task) {
-            $scope.calculatePoints(task);
+            task.points = $scope.calculatePoints(task);
             $scope.reorderTaskList();
             Categories.save($scope.categories);
         };
