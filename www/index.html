@@ -53,7 +53,7 @@
                      on-double-tap="editTask(task)"
                      ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} -->
 
-                    <pre>{{task}}</pre>
+                    <!--<pre>{{task}}</pre>-->
 
                     <div class="item item-divider">
                         <ion-checkbox ng-model="task.done" ng-click="doneTask(task)">{{task.title}}</ion-checkbox>
@@ -71,7 +71,12 @@
 
                         <div class="date">
                             <!-- TODO: print time left-->
-                            <i class=" ion-android-calendar text-center"> {{task.dueDate|date}} &nbsp;{{task.dueTime|date:"H:mm"}}</i>
+                            <i class="ion-android-calendar text-center"> {{task.dueDate|date}} &nbsp;{{task.dueTime|date:"H:mm"}}</i>
+                        </div>
+
+
+                        <div class="points">
+                            <b> <i class="ion-pound text-right">{{task.points}}</i></b>
                         </div>
                     </div>
                 </div>
