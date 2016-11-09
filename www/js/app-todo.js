@@ -2,16 +2,18 @@
 angular.module('todo', ['ionic'])
 
     .factory('Projects', function () {
+        "use strict";
+
         return {
             all: function () {
-                var projectString = window.localStorage['projects'];
+                var projectString = window.localStorage.projects;
                 if (projectString) {
                     return angular.fromJson(projectString);
                 }
                 return [];
             },
             save: function (projects) {
-                window.localStorage['projects'] = angular.toJson(projects);
+                window.localStorage.projects = angular.toJson(projects);
             },
             newProject: function (projectTitle) {
                 // Add a new project
@@ -21,15 +23,16 @@ angular.module('todo', ['ionic'])
                 };
             },
             getLastActiveIndex: function () {
-                return parseInt(window.localStorage['lastActiveProject']) || 0;
+                return parseInt(window.localStorage - lastActiveProject) || 0;
             },
             setLastActiveIndex: function (index) {
-                window.localStorage['lastActiveProject'] = index;
+                window.localStorage.lastActiveProject = index;
             }
-        }
+        };
     })
 
     .controller('TodoCtrl', function ($scope, $timeout, $ionicModal, $ionicSideMenuDelegate, Projects) {
+        "use strict";
 
         // A utility function for creating a new project
         // with the given projectTitle
@@ -120,7 +123,7 @@ angular.module('todo', ['ionic'])
         // this by using $timeout so everything is initialized
         // properly
         $timeout(function () {
-            if ($scope.projects.length == 0) {
+            if ($scope.projects.length === 0) {
                 //while(true) {
                 $scope.projectModal.show();
                 //var projectTitle = prompt('Your first project title:');

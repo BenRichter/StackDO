@@ -7,6 +7,8 @@
 angular.module('app', ['ionic', 'LocalStorageModule', 'controllers', 'services-factory', 'directives'])
 
     .run(function ($ionicPlatform) {
+        "use strict";
+
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -26,11 +28,14 @@ angular.module('app', ['ionic', 'LocalStorageModule', 'controllers', 'services-f
      *  Todo: use storage: https://scotch.io/tutorials/create-your-first-mobile-app-with-angularjs-and-ionic#building-out-the-real-stuff
      */
     .config(function (localStorageServiceProvider) {
+        "use strict";
+
         localStorageServiceProvider
             .setPrefix('stackDO');
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {
+        "use strict";
 
         // AngularUI Router with states
         // https://github.com/angular-ui/ui-router
@@ -52,7 +57,7 @@ angular.module('app', ['ionic', 'LocalStorageModule', 'controllers', 'services-f
                 }
             });
 
-        $urlRouterProvider.otherwise('/')
+        $urlRouterProvider.otherwise('/');
 
     });
 

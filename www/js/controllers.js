@@ -1,6 +1,7 @@
 angular.module('controllers', [])
 
     .controller('TodoCtrl', function ($scope, $timeout, $ionicModal, Categories, $ionicSideMenuDelegate) {
+        "use strict";
 
         /**
          * Initialize
