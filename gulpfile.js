@@ -11,14 +11,10 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 
-var paths = {
-    sass: ['scss/*.scss']
-};
-
 gulp.task('default', ['sass']);
 
 gulp.task('sass', function (done) {
-    gulp.src('scss/_ionic.app.scss')
+    gulp.src('./scss/ionic.app.scss')
         .pipe(sass())
         .on('error', function (err) {
             console.log('err: ', err);
@@ -29,18 +25,20 @@ gulp.task('sass', function (done) {
             cascade: false
         }))
         .pipe(concat('ionic.app.css'))
-        .pipe(gulp.dest('www/css/'))
+        .pipe(gulp.dest('./www/css/'))
         .pipe(minifyCss({
             keepSpecialComments: 0
         }))
         .pipe(rename({extname: '.min.css'}))
-        .pipe(gulp.dest('www/css/'))
+        .pipe(gulp.dest('./www/css/'))
         .on('end', done);
 });
 
+
 gulp.task('watch', function () {
-    gulp.watch(paths.sass, ['sass']);
+    gulp.watch('./scss/*.scss', ['sass']);
 });
+
 
 gulp.task('install', ['git-check'], function () {
     return bower.commands.install()
@@ -48,6 +46,7 @@ gulp.task('install', ['git-check'], function () {
             gutil.log('bower', gutil.colors.cyan(data.id), data.message);
         });
 });
+
 
 gulp.task('git-check', function (done) {
     if (!sh.which('git')) {
