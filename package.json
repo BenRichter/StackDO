@@ -5,6 +5,8 @@
   "dependencies": {
     "beepbeep": "^1.2.0",
     "global": "^4.3.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-plumber": "^1.1.0",
     "ionic": "^2.1.4"
   },
   "devDependencies": {

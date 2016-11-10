@@ -1,4 +1,9 @@
 {
   "name": "StackDO",
-  "app_id": "5f6a030a"
+  "app_id": "5f6a030a",
+  "gulpStartupTasks": [
+      "babel",
+      "sass",
+      "watch"
+   ]
 }
