@@ -45,7 +45,7 @@ gulp.task("babel", function () {
     return gulp.src(paths.es6)
         .pipe(plumber())
         .pipe(babel())
-        .pipe(concat('app.js'))
+        //.pipe(concat('app.js'))
         .pipe(gulp.dest("www/js"));
 });
 
