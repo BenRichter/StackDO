@@ -48,7 +48,7 @@ angular.module('controllers', [])
         // so everything is initialized properly
         // TODO: pre-populating here
         $timeout(function () {
-            if ($scope.categories.length == 0) {
+            if ($scope.categories.length === 0) {
                 while (true) {
 
                     var categoryTitle = prompt('Your first category title:');
@@ -121,14 +121,19 @@ angular.module('controllers', [])
 
         // Test for integer and null
         $scope.isNumber = function(obj) {
-            return ! isNaN (obj - 0) && obj != null;
+            return ! isNaN (obj - 0) && obj !== null;
         };
 
-        /** Calculate Stack Points */
+        /**
+         * Calculate Stack Points
+         *
+         * @param task {object}
+         * @returns points {number}
+         */
         $scope.calculatePoints = function (task) {
             console.log("calculate points");
 
-            if (task.done == true) {
+            if (task.done === true) {
                return 0;
             }
 
@@ -147,13 +152,18 @@ angular.module('controllers', [])
 
             //  (hardess) --> early morning? or second after quick task to get startet
 
-
             return dueDate + duration + priority;
         };
 
+
         /** Reorder List of tasks
-         *  triggered by: saveTask(), doneTask() */
-        $scope.reorderTaskList = function () {
+         *  triggered by: saveTask(), editTask(), doneTask()
+         *
+         **/
+        $scope.reorderTaskList = (tasks) => {
+            let sortObj = require('sort-object');
+
+            sortObj(tasks, {keys: ['a', 'b']});
 
             //if($scope.pointsChanged === true){
             console.log("reorder tasks");
@@ -161,6 +171,8 @@ angular.module('controllers', [])
             //
             //    this.pointsChanged = false;
             //}
+
+            //return;
         };
 
 
