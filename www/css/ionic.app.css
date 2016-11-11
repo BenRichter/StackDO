@@ -9381,7 +9381,6 @@ a.button {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.13);
     position: relative;
     border-style: solid;
-    border-width: 0 2px;
     transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     #stackdo .todo-list .task .item {
       padding: 2px 16px;
