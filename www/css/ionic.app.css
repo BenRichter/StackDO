@@ -9392,16 +9392,24 @@ a.button {
       overflow: visible;
       z-index: 3; }
       #stackdo .todo-list .task .item-divider .item-checkbox {
-        padding-top: 7px;
+        padding-top: 4px;
+        padding-bottom: 4px;
         padding-right: 40px;
-        overflow: visible; }
+        overflow: visible;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        /* Safari */
+        transform: translate(0, -50%);
+        line-height: 1.8; }
         #stackdo .todo-list .task .item-divider .item-checkbox .checkbox {
-          top: 20px;
+          top: 18px;
           left: auto;
           right: 0; }
     #stackdo .todo-list .task .item-text-wrap {
       font-size: 11px;
-      padding-bottom: 8px;
+      padding-bottom: 4px;
+      margin-top: -4px;
       color: #8c8c8c; }
       #stackdo .todo-list .task .item-text-wrap > *:not(:first-child) {
         padding-left: 10px; }
@@ -9409,11 +9417,8 @@ a.button {
         padding-right: 2px; }
       #stackdo .todo-list .task .item-text-wrap .text-center {
         display: block; }
-      #stackdo .todo-list .task .item-text-wrap .prio {
-        width: 28px;
-        min-width: 28px; }
-        #stackdo .todo-list .task .item-text-wrap .prio i:before {
-          margin-right: -0.03em; }
+      #stackdo .todo-list .task .item-text-wrap .prio i:before {
+        margin-right: -0.03em; }
   #stackdo .color-red.prio1 {
     border-color: #f38f8c; }
   #stackdo .color-red.prio2 {
@@ -9458,18 +9463,20 @@ a.button {
     border-color: #73dac6; }
   #stackdo .color-cyan.prio3 {
     border-color: #5AD4BC; }
-  #stackdo .duration2 > .item-divider {
+  #stackdo .duration0, #stackdo .durationNaN {
     min-height: 35px; }
-  #stackdo .duration3 > .item-divider {
+  #stackdo .duration2 {
     min-height: 45px; }
-  #stackdo .duration4 > .item-divider {
-    min-height: 54px; }
-  #stackdo .duration5 > .item-divider {
-    min-height: 62px; }
-  #stackdo .duration6 > .item-divider {
-    min-height: 69px; }
-  #stackdo .duration7 > .item-divider {
-    min-height: 75px; }
+  #stackdo .duration3 {
+    min-height: 55px; }
+  #stackdo .duration4 {
+    min-height: 64px; }
+  #stackdo .duration5 {
+    min-height: 72px; }
+  #stackdo .duration6 {
+    min-height: 79px; }
+  #stackdo .duration7 {
+    min-height: 85px; }
   #stackdo .card.done {
     background-color: #e7e7e7; }
 

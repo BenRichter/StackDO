@@ -24,17 +24,23 @@
 
             .item-divider {
                 padding:  0;
-                //min-height: 0;
                 overflow: visible;
                 z-index:  3;
 
                 .item-checkbox {
-                    padding-top:   7px;
-                    padding-right: 40px;
-                    overflow:      visible;
+                    padding-top:       4px;
+                    padding-bottom:    4px;
+                    padding-right:     40px;
+                    overflow:          visible;
+                    width:             100%;
+                    position:          absolute;
+                    top:               50%;
+                    -webkit-transform: translate(0, -50%); /* Safari */
+                    transform:         translate(0, -50%);
+                    line-height:       1.8;
 
                     .checkbox {
-                        top:   20px;
+                        top:   18px;
                         left:  auto;
                         right: 0;
                     }
@@ -44,7 +50,8 @@
             // Info Icons
             .item-text-wrap {
                 font-size:      11px;
-                padding-bottom: 8px;
+                padding-bottom: 4px;
+                margin-top:     -4px;
                 color:          #8c8c8c;
 
                 & > * {
@@ -55,8 +62,7 @@
 
                 .text-center { display: block; }
 
-                .duration { }
-                .prio { width: 28px; min-width: 28px;
+                .prio {
                     i:before { margin-right: -0.03em; }
                 }
                 .date { }
@@ -86,12 +92,13 @@
     .color-cyan   { @include priority(#5AD4BC); }
 
     // Set individual card heights by time needed
-    .duration2 > .item-divider { min-height: 35px;}
-    .duration3 > .item-divider { min-height: 45px;}
-    .duration4 > .item-divider { min-height: 54px;}
-    .duration5 > .item-divider { min-height: 62px;}
-    .duration6 > .item-divider { min-height: 69px;}
-    .duration7 > .item-divider { min-height: 75px;}
+    .duration0, .durationNaN { min-height: 35px; }
+    .duration2 { min-height: 45px;}
+    .duration3 { min-height: 55px;}
+    .duration4 { min-height: 64px;}
+    .duration5 { min-height: 72px;}
+    .duration6 { min-height: 79px;}
+    .duration7 { min-height: 85px;}
 
     .card.done { background-color: #e7e7e7; }
 }
