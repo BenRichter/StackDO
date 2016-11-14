@@ -5,8 +5,11 @@
     .menu-content .bar-header {
         .title {
             margin-left: -16px;
-            font-size:   20px;
-            line-height: 42px;
+            //font-size:   20px;
+            //line-height: 42px;
+
+            line-height: 44px; // fix android
+            font-size:   22px;
         }
 
         .menu-button {
