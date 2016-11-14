@@ -10,7 +10,7 @@ angular.module('controllers', [])
         $scope.currentDate = new Date();
         $scope.today = $scope.currentDate.toISOString().split('T')[0];
 
-        // clear fields
+        // clear fields on load
         $scope.resetToDefault = function () {
             $scope.task = {
                 title: "",
@@ -21,7 +21,6 @@ angular.module('controllers', [])
             };
         };
         $scope.resetToDefault();
-
 
         /** Categories **/
             // Open Sidebar
@@ -143,6 +142,7 @@ angular.module('controllers', [])
             console.log(" diffDate  " + remainingDays);
 
             // duration * 20
+            // Todo: prio/duration ?
             var duration = $scope.isNumber(task.duration) ? (task.duration * 20) : 0;
             console.log(" duration  " + duration);
 
@@ -160,13 +160,16 @@ angular.module('controllers', [])
          *  triggered by: saveTask(), editTask(), doneTask()
          *
          **/
-        $scope.reorderTaskList = (tasks) => {
-            let sortObj = require('sort-object');
+        $scope.reorderTaskList = () => {
+            console.log("reorder tasks!");
+            console.log($scope.activeCategories);
 
-            sortObj(tasks, {keys: ['a', 'b']});
+            $scope.activeCategories.tasks.sort((a, b) => {
+                return parseInt(b.points) - parseInt(a.points);
+            });
+
 
             //if($scope.pointsChanged === true){
-            console.log("reorder tasks");
 
             //
             //    this.pointsChanged = false;
@@ -174,6 +177,7 @@ angular.module('controllers', [])
 
             //return;
         };
+        $scope.reorderTaskList();
 
 
         // Create Task Modal
