@@ -48,19 +48,19 @@
             <!-- our list and list items -->
             <div class="todo-list">
 
-                <div class="card task color-red prio{{task.prio}} duration{{getCardHeight(task.duration)}}"
+                <div class="card task color-red prio{{task.prio}}"
                      ng-class="{'done': task.done}"
                      on-double-tap="editTask(task)"
                      ng-repeat="task in activeCategories.tasks"> <!-- {{category.color}} -->
 
                     <!--<pre>{{task}}</pre>-->
 
-                    <div class="item item-divider">
+                    <div class="item item-divider duration{{getCardHeight(task.duration)}}">
                         <ion-checkbox ng-model="task.done" ng-click="doneTask(task)">{{task.title}}</ion-checkbox>
                     </div>
 
                     <div class="item item-text-wrap row">
-                        <div class="duration">
+                        <div class="duration" ng-if="task.duration">
                             <i class="ion-android-time text-center">{{task.duration}}h</i>
                         </div>
 
@@ -69,7 +69,8 @@
                             <i class="ion-alert" ng-repeat="i in getPrio(task.prio) track by $index"></i>
                         </div>
 
-                        <div class="date">
+
+                        <div class="date" ng-if="task.dueDate">
                             <!-- TODO: print time left-->
                             <i class="ion-android-calendar text-center"> {{task.dueDate|date}} &nbsp;{{task.dueTime|date:"H:mm"}}</i>
                         </div>
@@ -122,7 +123,7 @@
                 <form ng-submit="saveTask(task)">
                     <div class="list ">
                         <label class="item item-input">
-                            <input type="text" placeholder="Titel" ng-model="task.title" autofocus required="required">
+                            <input type="text" placeholder="Titel*" ng-model="task.title" autofocus required="required">
                         </label>
 
                         <!--TODO: Description-->
